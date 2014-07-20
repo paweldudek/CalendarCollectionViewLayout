@@ -24,16 +24,10 @@
 
 - (NSArray *)calendarEventsForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout;
 
-@optional
-
-- (CGFloat)minuteToPixelRatioForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout;
-
 @end
 
 
 @interface CalendarCollectionViewLayout : UICollectionViewLayout
-@property(nonatomic, readonly) CGFloat minuteToPixelRatio;
-
 @property(nonatomic, readonly) NSDate *startOfDisplayedDay;
 @property(nonatomic, readonly) NSDate *endOfDisplayedDay;
 

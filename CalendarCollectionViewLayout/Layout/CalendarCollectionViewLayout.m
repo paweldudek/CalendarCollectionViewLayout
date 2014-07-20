@@ -8,8 +8,6 @@
 
 
 @interface CalendarCollectionViewLayout ()
-@property(nonatomic, readwrite) CGFloat minuteToPixelRatio;
-
 @property(nonatomic, readwrite) NSDate *startOfDisplayedDay;
 @property(nonatomic, readwrite) NSDate *endOfDisplayedDay;
 
@@ -30,10 +28,6 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator;
     [self registerClass:[UIView class] forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator];
 
     id <CalendarCollectionViewLayoutDelegate> delegate = (id <CalendarCollectionViewLayoutDelegate>) self.collectionView.delegate;
-
-    if ([delegate respondsToSelector:@selector(minuteToPixelRatioForCalendarCollectionViewLayout:)]) {
-        self.minuteToPixelRatio = [delegate minuteToPixelRatioForCalendarCollectionViewLayout:self];
-    }
 
     if ([delegate respondsToSelector:@selector(startOfDisplayedDateForCalendarCollectionViewLayout:)]) {
         self.startOfDisplayedDay = [delegate startOfDisplayedDateForCalendarCollectionViewLayout:self];

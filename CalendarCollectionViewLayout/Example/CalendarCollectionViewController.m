@@ -58,8 +58,4 @@
     return self.calendarEvents;
 }
 
-- (CGFloat)minuteToPixelRatioForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout {
-    return 1;
-}
-
 @end
