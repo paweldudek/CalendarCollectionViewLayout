@@ -4,7 +4,9 @@
 //
 
 
+#import <MTDates/NSDate+MTDates.h>
 #import "CalendarCollectionViewLayout.h"
+#import "BeadView.h"
 
 
 @interface CalendarCollectionViewLayout ()
@@ -25,7 +27,7 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
 - (void)prepareLayout {
     [super prepareLayout];
 
-    [self registerClass:[UIView class] forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindBead];
+    [self registerClass:[BeadView class] forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindBead];
     [self registerClass:[UIView class] forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator];
 
     id <CalendarCollectionViewLayoutDelegate> delegate = (id <CalendarCollectionViewLayoutDelegate>) self.collectionView.delegate;
@@ -36,7 +38,7 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
     else {
         NSAssert(NO, @"%@ has to implement base calendar layout mehtods!", delegate);
     }
-    
+
     if ([delegate respondsToSelector:@selector(endOfDisplayedDateForCalendarCollectionViewLayout:)]) {
         self.endOfDisplayedDay = [delegate endOfDisplayedDateForCalendarCollectionViewLayout:self];
     }
@@ -52,7 +54,7 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
     else {
         NSAssert(NO, @"%@ has to implement base calendar layout mehtods!", delegate);
     }
-    
+
     if ([delegate respondsToSelector:@selector(beadViewDateForCalendarCollectionViewLayout:)]) {
         self.beadViewDate = [delegate beadViewDateForCalendarCollectionViewLayout:self];
     }
@@ -78,6 +80,8 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
 
 - (CGSize)collectionViewContentSize {
     CGSize collectionViewContentSize = [super collectionViewContentSize];
+    NSInteger minutes = [self.startOfDisplayedDay mt_minutesUntilDate:self.endOfDisplayedDay];
+    collectionViewContentSize.height = minutes;
     return collectionViewContentSize;
 }
 
@@ -85,6 +89,7 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray *attributes = [NSMutableArray array];
+    [attributes addObject:[self beadViewLayoutAttributes]];
 
     return attributes;
 }
@@ -102,7 +107,21 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
 }
 
 - (UICollectionViewLayoutAttributes *)beadViewLayoutAttributes {
-    return nil;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindBead
+                                                                                                               withIndexPath:indexPath];
+
+    NSInteger minutes = [[self startOfDisplayedDay] mt_minutesUntilDate:self.beadViewDate];
+
+    CGRect timeIndicatorFrame = CGRectZero;
+
+    timeIndicatorFrame.size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), 1);
+    timeIndicatorFrame.origin.y = minutes;
+
+    attributes.frame = timeIndicatorFrame;
+    attributes.zIndex = 1;
+
+    return attributes;
 }
 
 @end
