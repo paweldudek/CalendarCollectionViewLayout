@@ -5,11 +5,12 @@
 
 
 #import <Foundation/Foundation.h>
+#import "CalendarCollectionViewLayout.h"
 
 @class CalendarEventsProvider;
 
 
-@interface CalendarCollectionViewController : UICollectionViewController
+@interface CalendarCollectionViewController : UICollectionViewController <CalendarCollectionViewLayoutDelegate>
 @property(nonatomic, strong) CalendarEventsProvider *calendarEventsProvider;
 @property(nonatomic, strong) NSArray *calendarEvents;
 

@@ -26,7 +26,7 @@
 
 @optional
 
-- (CGFloat)minuteToPixelRatioForCalendarColleviewViewLayout:(CalendarCollectionViewLayout *)layout;
+- (CGFloat)minuteToPixelRatioForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout;
 
 @end
 

@@ -31,8 +31,8 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator;
 
     id <CalendarCollectionViewLayoutDelegate> delegate = (id <CalendarCollectionViewLayoutDelegate>) self.collectionView.delegate;
 
-    if ([delegate respondsToSelector:@selector(minuteToPixelRatioForCalendarColleviewViewLayout:)]) {
-        self.minuteToPixelRatio = [delegate minuteToPixelRatioForCalendarColleviewViewLayout:self];
+    if ([delegate respondsToSelector:@selector(minuteToPixelRatioForCalendarCollectionViewLayout:)]) {
+        self.minuteToPixelRatio = [delegate minuteToPixelRatioForCalendarCollectionViewLayout:self];
     }
 
     if ([delegate respondsToSelector:@selector(startOfDisplayedDateForCalendarCollectionViewLayout:)]) {

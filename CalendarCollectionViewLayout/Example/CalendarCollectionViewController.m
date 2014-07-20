@@ -4,8 +4,8 @@
 //
 
 
+#import <MTDates/NSDate+MTDates.h>
 #import "CalendarCollectionViewController.h"
-#import "CalendarCollectionViewLayout.h"
 #import "CalendarEventsProvider.h"
 
 
@@ -42,6 +42,24 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor redColor];
     return cell;
+}
+
+#pragma mark -
+
+- (NSDate *)startOfDisplayedDateForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout {
+    return [self.calendarEventsProvider.displayedDay mt_startOfCurrentDay];
+}
+
+- (NSDate *)endOfDisplayedDateForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout {
+    return [self.calendarEventsProvider.displayedDay mt_endOfCurrentDay];
+}
+
+- (NSArray *)calendarEventsForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout {
+    return self.calendarEvents;
+}
+
+- (CGFloat)minuteToPixelRatioForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout {
+    return 1;
 }
 
 @end
