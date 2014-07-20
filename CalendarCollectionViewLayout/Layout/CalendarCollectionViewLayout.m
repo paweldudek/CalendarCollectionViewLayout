@@ -17,8 +17,8 @@
 @property(nonatomic, readwrite) NSDate *beadViewDate;
 @end
 
-NSString *const CalendarCollectionViewLayoutDecorationKindBead;
-NSString *const CalendarCollectionViewLayoutDecorationKindSeparator;
+NSString *const CalendarCollectionViewLayoutDecorationKindBead = @"CalendarCollectionViewLayoutDecorationKindBead";
+NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"CalendarCollectionViewLayoutDecorationKindSeparator";
 
 @implementation CalendarCollectionViewLayout
 

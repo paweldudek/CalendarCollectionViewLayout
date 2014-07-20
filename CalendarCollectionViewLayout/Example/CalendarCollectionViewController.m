@@ -7,6 +7,8 @@
 #import <MTDates/NSDate+MTDates.h>
 #import "CalendarCollectionViewController.h"
 #import "CalendarEventsProvider.h"
+#import "CalendarCollectionViewCell.h"
+#import "ExampleCalendarEvent.h"
 
 
 @implementation CalendarCollectionViewController
@@ -29,7 +31,7 @@
     [super viewDidLoad];
 
     self.collectionView.backgroundColor = [UIColor whiteColor];
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
+    [self.collectionView registerClass:[CalendarCollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
 }
 
 #pragma mark - UICollectionView Delegate & Data Source
@@ -39,10 +41,11 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.6f];
-    cell.layer.cornerRadius = 6.0f;
-    cell.layer.masksToBounds = YES;
+    CalendarCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+
+    ExampleCalendarEvent *event = self.calendarEvents[(NSUInteger) indexPath.row];
+    cell.textLabel.text = event.name;
+
     return cell;
 }
 

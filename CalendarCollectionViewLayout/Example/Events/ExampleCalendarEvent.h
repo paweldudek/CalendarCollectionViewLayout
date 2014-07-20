@@ -9,5 +9,9 @@
 
 
 @interface ExampleCalendarEvent : NSObject <CalendarEvent>
+
+@property(nonatomic, strong) NSString *name;
+
 + (instancetype)eventWithStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
+
 @end
