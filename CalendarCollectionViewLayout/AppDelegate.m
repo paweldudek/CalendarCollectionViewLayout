@@ -1,12 +1,12 @@
 //
-//  AppDelegate.m
-//  CalendarCollectionViewLayout
-//
 //  Created by Pawel Dudek on 02/07/14.
-//  Copyright (c) 2014 dudek. All rights reserved.
+//  Copyright (c) 2014 Dudek. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "CalendarCollectionViewController.h"
+#import "CalendarEventsProvider.h"
+#import "NSDate+MTDates.h"
 
 @implementation AppDelegate
 
@@ -15,6 +15,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+
+    CalendarEventsProvider *provider = [[CalendarEventsProvider alloc] initWithDisplayedDay:[[NSDate date] mt_startOfCurrentDay]];
+    self.window.rootViewController = [[CalendarCollectionViewController alloc] initWithCalendarEventsProvider:provider];
+
     [self.window makeKeyAndVisible];
     return YES;
 }
