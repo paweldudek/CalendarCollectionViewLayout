@@ -22,6 +22,8 @@
 - (NSDate *)startOfDisplayedDateForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout;
 - (NSDate *)endOfDisplayedDateForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout;
 
+- (NSDate *)beadViewDateForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout;
+
 - (NSArray *)calendarEventsForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout;
 
 @end
@@ -30,5 +32,7 @@
 @interface CalendarCollectionViewLayout : UICollectionViewLayout
 @property(nonatomic, readonly) NSDate *startOfDisplayedDay;
 @property(nonatomic, readonly) NSDate *endOfDisplayedDay;
+
+@property(nonatomic, readonly) NSDate *beadViewDate;
 
 @end

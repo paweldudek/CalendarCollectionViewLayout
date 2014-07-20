@@ -58,4 +58,8 @@
     return self.calendarEvents;
 }
 
+- (NSDate *)beadViewDateForCalendarCollectionViewLayout:(CalendarCollectionViewLayout *)layout {
+    return [NSDate date];
+}
+
 @end

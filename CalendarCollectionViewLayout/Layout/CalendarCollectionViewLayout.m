@@ -14,6 +14,7 @@
 @property(nonatomic, strong) NSArray *cachedSeparatorsAttributes;
 @property(nonatomic, strong) NSArray *cachedCellAttributes;
 
+@property(nonatomic, readwrite) NSDate *beadViewDate;
 @end
 
 NSString *const CalendarCollectionViewLayoutDecorationKindBead;
@@ -47,6 +48,13 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator;
 
     if ([delegate respondsToSelector:@selector(calendarEventsForCalendarCollectionViewLayout:)]) {
         events = [delegate calendarEventsForCalendarCollectionViewLayout:self];
+    }
+    else {
+        NSAssert(NO, @"%@ has to implement base calendar layout mehtods!", delegate);
+    }
+    
+    if ([delegate respondsToSelector:@selector(beadViewDateForCalendarCollectionViewLayout:)]) {
+        self.beadViewDate = [delegate beadViewDateForCalendarCollectionViewLayout:self];
     }
     else {
         NSAssert(NO, @"%@ has to implement base calendar layout mehtods!", delegate);
