@@ -68,8 +68,29 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
 
 #pragma mark - Layout Preparation Helpers
 
-- (void)calculateCellLayoutAttributesForEvents:(NSArray *)array {
-    self.cachedCellAttributes = [NSArray array];
+- (void)calculateCellLayoutAttributesForEvents:(NSArray *)events {
+    NSMutableArray *cellAttributes = [NSMutableArray array];
+
+    for (NSUInteger index = 0; index < [self.collectionView numberOfItemsInSection:0]; ++index) {
+        id <CalendarEvent> event = events[index];
+
+        NSInteger eventStartingPosition = [self.startOfDisplayedDay mt_minutesUntilDate:event.startDate];
+        NSInteger eventDuration = [event.startDate mt_minutesUntilDate:event.endDate];
+
+
+        CGPoint eventCenter = CGPointMake(CGRectGetMidX(self.collectionView.bounds), eventStartingPosition + eventDuration / 2);
+        eventCenter.y = roundf(eventCenter.y);
+
+        NSIndexPath *path = [NSIndexPath indexPathForItem:index inSection:0];
+        UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
+
+        attributes.center = eventCenter;
+        attributes.size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), eventDuration);
+
+        [cellAttributes addObject:attributes];
+    }
+
+    self.cachedCellAttributes = [cellAttributes copy];
 }
 
 - (void)calculateSeparatorsLayoutAttributes {
@@ -90,6 +111,7 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray *attributes = [NSMutableArray array];
     [attributes addObject:[self beadViewLayoutAttributes]];
+    [attributes addObjectsFromArray:self.cachedCellAttributes];
 
     return attributes;
 }
