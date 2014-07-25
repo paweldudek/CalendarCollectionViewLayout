@@ -20,6 +20,7 @@
 		439CD413196454BC005A8798 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 439CD411196454BC005A8798 /* InfoPlist.strings */; };
 		439CD415196454BC005A8798 /* CalendarCollectionViewLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CD414196454BC005A8798 /* CalendarCollectionViewLayoutTests.m */; };
 		6496658CB01B485CA397DC84 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A992FD162734402695CAC899 /* libPods.a */; };
+		B27A91E4E3769FDFEE719350 /* CalendarLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = B27A98FC5A935F1D0C2D868B /* CalendarLayoutAttributes.m */; };
 		B27A93536334F6BE2468FA07 /* BeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B27A967BFED0058D5A740118 /* BeadView.m */; };
 		B27A9358C6EC8300DE0DCD10 /* CalendarEventsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B27A9C5E94EE3DF7C49B8916 /* CalendarEventsProvider.m */; };
 		B27A99DA37640BF1382E20E3 /* CalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B27A9FD7676BECDA041EAAAA /* CalendarCollectionViewLayout.m */; };
@@ -59,14 +60,16 @@
 		82EC372A66334695B08110E5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		A992FD162734402695CAC899 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27A927D0EE1AA3F8516A3FA /* SeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorView.m; sourceTree = "<group>"; };
+		B27A92ADDEDBCFF73F5AA7CF /* CalendarLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarLayoutAttributes.h; sourceTree = "<group>"; };
 		B27A92D61BEE68A4F7D0143B /* SeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorView.h; sourceTree = "<group>"; };
 		B27A93E80573CE532FF17CDD /* ExampleCalendarEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleCalendarEvent.h; sourceTree = "<group>"; };
 		B27A94956104E04D93DF7A28 /* ExampleCalendarEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleCalendarEvent.m; sourceTree = "<group>"; };
 		B27A9658C9FC84903ADAABAB /* BeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeadView.h; sourceTree = "<group>"; };
-		B27A967BFED0058D5A740118 /* BeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeadView.m; sourceTree = "<group>"; };
 		B27A967A42A8493000660835 /* CalendarCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCollectionViewCell.h; sourceTree = "<group>"; };
+		B27A967BFED0058D5A740118 /* BeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeadView.m; sourceTree = "<group>"; };
 		B27A96ACB899748F4B691B10 /* CalendarCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarCollectionViewCell.m; sourceTree = "<group>"; };
 		B27A97F4814CFD9E45345F24 /* CalendarCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCollectionViewController.h; sourceTree = "<group>"; };
+		B27A98FC5A935F1D0C2D868B /* CalendarLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarLayoutAttributes.m; sourceTree = "<group>"; };
 		B27A996E781A70DDAF19722F /* CalendarEventsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarEventsProvider.h; sourceTree = "<group>"; };
 		B27A9B56156AFC697345F0EE /* CalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarCollectionViewLayout.h; sourceTree = "<group>"; };
 		B27A9C5E94EE3DF7C49B8916 /* CalendarEventsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarEventsProvider.m; sourceTree = "<group>"; };
@@ -206,6 +209,15 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		B27A967430708E485595610F /* Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				B27A98FC5A935F1D0C2D868B /* CalendarLayoutAttributes.m */,
+				B27A92ADDEDBCFF73F5AA7CF /* CalendarLayoutAttributes.h */,
+			);
+			path = Attributes;
+			sourceTree = "<group>";
+		};
 		B27A97344A1F70CE8C0F41FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +233,7 @@
 				B27A9FD7676BECDA041EAAAA /* CalendarCollectionViewLayout.m */,
 				B27A9B56156AFC697345F0EE /* CalendarCollectionViewLayout.h */,
 				B27A94FB807B8EEDA3490FBA /* Decoration Views */,
+				B27A967430708E485595610F /* Attributes */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -366,6 +379,7 @@
 				B27A93536334F6BE2468FA07 /* BeadView.m in Sources */,
 				B27A9E56163811E260998D51 /* SeparatorView.m in Sources */,
 				B27A9A3554CA9E3BBFE4511A /* CalendarCollectionViewCell.m in Sources */,
+				B27A91E4E3769FDFEE719350 /* CalendarLayoutAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

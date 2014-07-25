@@ -7,6 +7,8 @@
 #import <MTDates/NSDate+MTDates.h>
 #import "CalendarCollectionViewLayout.h"
 #import "BeadView.h"
+#import "CalendarLayoutAttributes.h"
+#import "SeparatorView.h"
 
 
 @interface CalendarCollectionViewLayout ()
@@ -28,7 +30,8 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
     [super prepareLayout];
 
     [self registerClass:[BeadView class] forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindBead];
-    [self registerClass:[UIView class] forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator];
+    [self registerClass:[SeparatorView class]
+forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator];
 
     id <CalendarCollectionViewLayoutDelegate> delegate = (id <CalendarCollectionViewLayoutDelegate>) self.collectionView.delegate;
 
@@ -94,7 +97,50 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
 }
 
 - (void)calculateSeparatorsLayoutAttributes {
-    self.cachedSeparatorsAttributes = [NSArray array];
+    NSMutableArray *separatorAttributes = [NSMutableArray array];
+
+    NSInteger numberOfFullHours = [self.startOfDisplayedDay mt_hoursUntilDate:self.endOfDisplayedDay] + 1;
+    NSInteger attributeItem = 0;
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+
+
+    for (NSUInteger index = 0; index < numberOfFullHours; ++index) {
+        NSDate *hourDate = [self.startOfDisplayedDay mt_dateHoursAfter:index];
+
+        CalendarLayoutAttributes *attributes = [self separatorAttributesAtIndex:attributeItem withDate:hourDate];
+
+        attributes.separatorText = [dateFormatter stringFromDate:hourDate];
+        attributes.separatorColor = [UIColor colorWithWhite:0.75f alpha:1.0f];
+
+        [separatorAttributes addObject:attributes];
+
+        attributeItem++;
+
+        NSDate *halfHourDate = [hourDate mt_dateMinutesAfter:30];
+        attributes = [self separatorAttributesAtIndex:attributeItem withDate:halfHourDate];
+        attributes.separatorColor = [UIColor colorWithWhite:0.87f alpha:1.0f];
+
+        [separatorAttributes addObject:attributes];
+
+        attributeItem++;
+    }
+    self.cachedSeparatorsAttributes = [separatorAttributes copy];
+}
+
+- (CalendarLayoutAttributes *)separatorAttributesAtIndex:(NSInteger)attributesIndex withDate:(NSDate *)date {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:attributesIndex inSection:0];
+    CalendarLayoutAttributes *attributes = [CalendarLayoutAttributes layoutAttributesForDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator
+                                                                                               withIndexPath:indexPath];
+    attributes.frame = CGRectMake(0, 0, CGRectGetWidth(self.collectionView.bounds), 20);
+    attributes.zIndex = -2;
+
+    CGFloat yPosition = [self.startOfDisplayedDay mt_minutesUntilDate:date];
+    attributes.center = CGPointMake(CGRectGetMidX(self.collectionView.frame), yPosition);
+
+    return attributes;
 }
 
 #pragma mark - Content Size
@@ -112,6 +158,7 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
     NSMutableArray *attributes = [NSMutableArray array];
     [attributes addObject:[self beadViewLayoutAttributes]];
     [attributes addObjectsFromArray:self.cachedCellAttributes];
+    [attributes addObjectsFromArray:self.cachedSeparatorsAttributes];
 
     return attributes;
 }
@@ -144,6 +191,12 @@ NSString *const CalendarCollectionViewLayoutDecorationKindSeparator = @"Calendar
     attributes.zIndex = 1;
 
     return attributes;
+}
+
+#pragma mark -
+
++ (Class)layoutAttributesClass {
+    return [CalendarLayoutAttributes class];
 }
 
 @end
