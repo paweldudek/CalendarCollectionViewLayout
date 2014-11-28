@@ -80,7 +80,6 @@ forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator];
         NSInteger eventStartingPosition = [self.startOfDisplayedDay mt_minutesUntilDate:event.startDate];
         NSInteger eventDuration = [event.startDate mt_minutesUntilDate:event.endDate];
 
-
         CGPoint eventCenter = CGPointMake(CGRectGetMidX(self.collectionView.bounds), eventStartingPosition + eventDuration / 2);
         eventCenter.y = roundf(eventCenter.y);
 
