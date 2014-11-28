@@ -85,7 +85,7 @@ forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator];
         eventCenter.y = roundf(eventCenter.y);
 
         NSIndexPath *path = [NSIndexPath indexPathForItem:index inSection:0];
-        UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:path];
+        UICollectionViewLayoutAttributes *attributes = [[[self class] layoutAttributesClass] layoutAttributesForCellWithIndexPath:path];
 
         attributes.center = eventCenter;
         attributes.size = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), eventDuration);
@@ -132,8 +132,8 @@ forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator];
 
 - (CalendarLayoutAttributes *)separatorAttributesAtIndex:(NSInteger)attributesIndex withDate:(NSDate *)date {
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:attributesIndex inSection:0];
-    CalendarLayoutAttributes *attributes = [CalendarLayoutAttributes layoutAttributesForDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator
-                                                                                               withIndexPath:indexPath];
+    CalendarLayoutAttributes *attributes = [[[self class] layoutAttributesClass] layoutAttributesForDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator
+                                                                                                           withIndexPath:indexPath];
     attributes.frame = CGRectMake(0, 0, CGRectGetWidth(self.collectionView.bounds), 20);
     attributes.zIndex = -2;
 
@@ -177,8 +177,8 @@ forDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindSeparator];
 
 - (UICollectionViewLayoutAttributes *)beadViewLayoutAttributes {
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
-    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindBead
-                                                                                                               withIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *attributes = [[[self class] layoutAttributesClass] layoutAttributesForDecorationViewOfKind:CalendarCollectionViewLayoutDecorationKindBead
+                                                                                                                   withIndexPath:indexPath];
 
     NSInteger minutes = [[self startOfDisplayedDay] mt_minutesUntilDate:self.beadViewDate];
 

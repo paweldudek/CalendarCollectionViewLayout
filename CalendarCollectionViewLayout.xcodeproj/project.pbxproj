@@ -57,8 +57,9 @@
 		439CD410196454BC005A8798 /* CalendarCollectionViewLayoutTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CalendarCollectionViewLayoutTests-Info.plist"; sourceTree = "<group>"; };
 		439CD412196454BC005A8798 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		439CD414196454BC005A8798 /* CalendarCollectionViewLayoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarCollectionViewLayoutTests.m; sourceTree = "<group>"; };
-		82EC372A66334695B08110E5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		99D021CED2FF2527820E97DB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A992FD162734402695CAC899 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC785E6D6FCC13A53E3E0121 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B27A927D0EE1AA3F8516A3FA /* SeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorView.m; sourceTree = "<group>"; };
 		B27A92ADDEDBCFF73F5AA7CF /* CalendarLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarLayoutAttributes.h; sourceTree = "<group>"; };
 		B27A92D61BEE68A4F7D0143B /* SeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorView.h; sourceTree = "<group>"; };
@@ -109,7 +110,7 @@
 				439CD40E196454BC005A8798 /* CalendarCollectionViewLayoutTests */,
 				439CD3EE196454BC005A8798 /* Frameworks */,
 				439CD3ED196454BC005A8798 /* Products */,
-				82EC372A66334695B08110E5 /* Pods.xcconfig */,
+				85B94904587E4B4A6637CEBC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +175,15 @@
 				439CD411196454BC005A8798 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		85B94904587E4B4A6637CEBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC785E6D6FCC13A53E3E0121 /* Pods.debug.xcconfig */,
+				99D021CED2FF2527820E97DB /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		B27A94EE8CE304CA6836A96B /* Example */ = {
@@ -360,7 +370,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -495,7 +505,7 @@
 		};
 		439CD419196454BC005A8798 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82EC372A66334695B08110E5 /* Pods.xcconfig */;
+			baseConfigurationReference = AC785E6D6FCC13A53E3E0121 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -509,7 +519,7 @@
 		};
 		439CD41A196454BC005A8798 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82EC372A66334695B08110E5 /* Pods.xcconfig */;
+			baseConfigurationReference = 99D021CED2FF2527820E97DB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
