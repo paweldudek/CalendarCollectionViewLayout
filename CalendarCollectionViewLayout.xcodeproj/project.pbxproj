@@ -189,8 +189,8 @@
 		B27A94EE8CE304CA6836A96B /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				B27A9EE7E7850254E4696CD6 /* CalendarCollectionViewController.m */,
 				B27A97F4814CFD9E45345F24 /* CalendarCollectionViewController.h */,
+				B27A9EE7E7850254E4696CD6 /* CalendarCollectionViewController.m */,
 				B27A9629C28272ABE322CBE0 /* Events */,
 				B27A97344A1F70CE8C0F41FF /* Views */,
 			);
@@ -200,10 +200,10 @@
 		B27A94FB807B8EEDA3490FBA /* Decoration Views */ = {
 			isa = PBXGroup;
 			children = (
-				B27A967BFED0058D5A740118 /* BeadView.m */,
 				B27A9658C9FC84903ADAABAB /* BeadView.h */,
-				B27A927D0EE1AA3F8516A3FA /* SeparatorView.m */,
+				B27A967BFED0058D5A740118 /* BeadView.m */,
 				B27A92D61BEE68A4F7D0143B /* SeparatorView.h */,
+				B27A927D0EE1AA3F8516A3FA /* SeparatorView.m */,
 			);
 			path = "Decoration Views";
 			sourceTree = "<group>";
@@ -211,10 +211,10 @@
 		B27A9629C28272ABE322CBE0 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				B27A9C5E94EE3DF7C49B8916 /* CalendarEventsProvider.m */,
 				B27A996E781A70DDAF19722F /* CalendarEventsProvider.h */,
-				B27A94956104E04D93DF7A28 /* ExampleCalendarEvent.m */,
+				B27A9C5E94EE3DF7C49B8916 /* CalendarEventsProvider.m */,
 				B27A93E80573CE532FF17CDD /* ExampleCalendarEvent.h */,
+				B27A94956104E04D93DF7A28 /* ExampleCalendarEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -222,8 +222,8 @@
 		B27A967430708E485595610F /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
-				B27A98FC5A935F1D0C2D868B /* CalendarLayoutAttributes.m */,
 				B27A92ADDEDBCFF73F5AA7CF /* CalendarLayoutAttributes.h */,
+				B27A98FC5A935F1D0C2D868B /* CalendarLayoutAttributes.m */,
 			);
 			path = Attributes;
 			sourceTree = "<group>";
@@ -231,8 +231,8 @@
 		B27A97344A1F70CE8C0F41FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B27A96ACB899748F4B691B10 /* CalendarCollectionViewCell.m */,
 				B27A967A42A8493000660835 /* CalendarCollectionViewCell.h */,
+				B27A96ACB899748F4B691B10 /* CalendarCollectionViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,8 +240,8 @@
 		B27A9EF7CD6ACCCE2DCE7747 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				B27A9FD7676BECDA041EAAAA /* CalendarCollectionViewLayout.m */,
 				B27A9B56156AFC697345F0EE /* CalendarCollectionViewLayout.h */,
+				B27A9FD7676BECDA041EAAAA /* CalendarCollectionViewLayout.m */,
 				B27A94FB807B8EEDA3490FBA /* Decoration Views */,
 				B27A967430708E485595610F /* Attributes */,
 			);
@@ -312,8 +312,6 @@
 			mainGroup = 439CD3E3196454BC005A8798;
 			productRefGroup = 439CD3ED196454BC005A8798 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				439CD3EB196454BC005A8798 /* CalendarCollectionViewLayout */,
